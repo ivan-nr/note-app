@@ -11,3 +11,9 @@ export async function register(payload) {
 
   return response.data;
 }
+
+export async function logout() {
+  const response = await api.post("/api/logout");
+
+  return response.data;
+}
