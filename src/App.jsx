@@ -1,13 +1,23 @@
-function App() {
+import { Route, Routes } from "react-router-dom";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import PrivateRoutes from "./routes/PrivateRoutes";
+import Home from "./pages/Home";
+import Users from "./pages/Users";
+import NotFound from "./pages/NotFound";
+
+const App = () => {
   return (
-    <>
-      <main className="min-h-screen flex justify-center items-center">
-        <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
-          Hello world!
-        </h1>
-      </main>
-    </>
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="*" element={<NotFound />} />
+      <Route element={<PrivateRoutes />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/users" element={<Users />} />
+      </Route>
+    </Routes>
   );
-}
+};
 
 export default App;
