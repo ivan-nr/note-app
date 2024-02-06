@@ -29,11 +29,17 @@ const Login = () => {
         console.log(data);
         toast.success(data.message);
         const token = data.access_token;
+        const user = data.user;
         localStorage.setItem("token", token);
+        localStorage.setItem("userID", JSON.stringify(user.id));
+        localStorage.setItem("userName", user.name);
+        console.log("id", user.id);
+        console.log("name", user.name);
         // decode token
         navigate("/");
-      } else {
-        toast.error("Invalid username or password");
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
       }
     } catch (error) {
       toast.error(error.message);
