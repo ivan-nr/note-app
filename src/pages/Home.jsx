@@ -60,6 +60,11 @@ const Home = () => {
     getDataNotes();
   }, []);
 
+  const resetForm = () => {
+    setTitle("");
+    setNote("");
+  };
+
   const handleAddNote = async () => {
     setLoading(true);
 
@@ -101,6 +106,7 @@ const Home = () => {
   };
 
   const openAddDialog = () => {
+    resetForm();
     setAddDialogOpen(true);
     setIsEditing(false);
   };
@@ -140,6 +146,7 @@ const Home = () => {
         setAddDialogOpen(false);
         toast.success(response.message);
         getDataNotes();
+        resetForm();
         setLoading(false);
       }
     } catch (error) {
