@@ -3,9 +3,9 @@ import React from "react";
 
 const Layout = ({ children }) => {
   return (
-    <div className="h-screen flex">
+    <div className="h-screen flex justify-center md:justify-between">
       <Sidebar />
-      <main>{children}</main>
+      <main className="w-full">{children}</main>
     </div>
   );
 };
