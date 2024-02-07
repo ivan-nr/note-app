@@ -50,7 +50,7 @@ const Sidebar = () => {
     }
   };
   return (
-    <nav className="hidden w-72 min-h-screen bg-base-200 text-base-content md:flex flex-col justify-between border-r-2">
+    <nav className="hidden w-80 min-h-screen bg-base-200 text-base-content md:flex flex-col justify-between border-r-2">
       <div className="flex flex-col w-full my-4 px-4 py-4 gap-2">
         <div className="flex justify-center items-center gap-4 mb-8">
           <NotebookPen size={32} className="text-primary" />
@@ -77,7 +77,7 @@ const Sidebar = () => {
           </NavLink>
         )}
       </div>
-      <div className="flex justify-between items-center px-2 py-2 gap-4 border-t-2">
+      <div className="flex justify-between items-center px-2 py-2 gap-2 border-t-2">
         <div className="flex gap-2 items-center ml-2">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -111,9 +111,13 @@ const Sidebar = () => {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <span className="text-[14px] font-medium">{userName}</span>
+          <span className="text-[14px] font-medium line-clamp-1">
+            {userName}
+          </span>
         </div>
-        <ModeToggle />
+        <div>
+          <ModeToggle />
+        </div>
       </div>
     </nav>
   );

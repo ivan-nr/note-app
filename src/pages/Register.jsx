@@ -89,7 +89,7 @@ const Register = () => {
             </div>
           </form>
           <Button
-            disabled={loading || !user || !pass}
+            disabled={loading || !name || !user || !pass}
             className="btn w-full mt-8"
             type="submit"
             onClick={handleRegister}
