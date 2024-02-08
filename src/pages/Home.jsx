@@ -181,7 +181,7 @@ const Home = () => {
             notes.map((note) => (
               <Card
                 key={note.note_id}
-                className="w-[280px] md:w-[260px] lg:w-[280px] flex flex-col justify-between"
+                className="w-[300px] md:w-[240px] lg:w-[280px] flex flex-col justify-between"
               >
                 <div>
                   <CardHeader>

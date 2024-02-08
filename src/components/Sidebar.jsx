@@ -1,11 +1,14 @@
-import { Home, NotebookPen, Users } from "lucide-react";
+import { Home, LogOut, NotebookPen, User, Users } from "lucide-react";
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { ModeToggle } from "./mode-toggle";
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Button } from "./ui/button";
@@ -49,6 +52,12 @@ const Sidebar = () => {
       toast.error(error.message);
     }
   };
+
+  const initials = userName
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase())
+    .join("");
+
   return (
     <nav className="hidden w-80 min-h-screen bg-base-200 text-base-content md:flex flex-col justify-between border-r-2">
       <div className="flex flex-col w-full my-4 px-4 py-4 gap-2">
@@ -56,6 +65,7 @@ const Sidebar = () => {
           <NotebookPen size={32} className="text-primary" />
           <h2 className="text-2xl text-primary font-bold">Note App</h2>
         </div>
+
         <NavLink
           to={"/"}
           className={`flex items-center gap-2 px-4 py-2 rounded-lg ${
@@ -83,14 +93,29 @@ const Sidebar = () => {
             <DropdownMenuTrigger asChild>
               <Avatar className="cursor-pointer">
                 <AvatarImage src="https://github.com/shadcn.png" />
-                <AvatarFallback>IN</AvatarFallback>
+                <AvatarFallback>{initials}</AvatarFallback>
               </Avatar>
             </DropdownMenuTrigger>
-            <DropdownMenuContent>
+            <DropdownMenuContent className="w-56">
+              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <Link to={`/users/${userId}`}>
+                <Button variant="ghost" className="w-full">
+                  <User className="mr-2 h-4 w-4" />
+                  <span>Profile</span>
+                  <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                </Button>
+              </Link>
+              <DropdownMenuSeparator />
               <AlertDialog>
                 <AlertDialogTrigger asChild>
-                  <Button className="w-full" variant="default">
-                    Sign Out
+                  <Button
+                    variant="ghost"
+                    className="w-full hover:bg-destructive/80"
+                  >
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>Log out</span>
+                    <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
                   </Button>
                 </AlertDialogTrigger>
                 <AlertDialogContent>
