@@ -1,3 +1,5 @@
+import { api } from "@/utils/api";
+
 export async function getUsers() {
   const response = await api.get("/api/users");
 
@@ -18,6 +20,12 @@ export async function postUsers(payload) {
 
 export async function updateUsers(id, payload) {
   const response = await api.put(`/api/users/${id}`, payload);
+
+  return response.data;
+}
+
+export async function deleteUsers(id) {
+  const response = await api.delete(`/api/users/${id}`);
 
   return response.data;
 }
