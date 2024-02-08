@@ -146,7 +146,6 @@ const Home = () => {
         setAddDialogOpen(false);
         toast.success(response.message);
         getDataNotes();
-        resetForm();
         setLoading(false);
       }
     } catch (error) {
