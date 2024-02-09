@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/table";
 import { deleteUsers, getUser, getUsers, updateUsers } from "@/hooks/users";
 import { toast } from "react-toastify";
-import { Eye, EyeOff, Loader2, Pencil, Trash2 } from "lucide-react";
+import { Eye, EyeOff, Loader2, Menu, Pencil, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -133,22 +133,22 @@ const Users = () => {
 
   return (
     <Layout>
-      <div className="w-full h-screen p-8 flex flex-col gap-4 overflow-y-auto">
-        <div className="flex items-center mx-8 border-b pb-2">
+      <div className="w-full h-screen p-4 lg:p-8 flex flex-col gap-4 overflow-y-auto">
+        <div className="flex justify-between items-center md:mx-4 lg:mx-8 border-b pb-3">
           <h2 className="scroll-m-20 text-2xl md:text-3xl font-semibold tracking-tight first:mt-0 w-full">
             Users
           </h2>
         </div>
 
-        <div className="flex w-full justify-center gap-2 flex-wrap">
+        <div className="flex justify-center gap-2">
           {loading ? (
             <div className="h-[600px] flex flex-col gap-2 justify-center items-center">
               <Loader2 className="w-10 h-10 animate-spin" />
               <span>Fetching Data . . .</span>
             </div>
           ) : (
-            <div className="w-full px-8 py-10">
-              <Table className="overflow-x-auto">
+            <div className="w-full md:mx-4 lg:mx-8 my-10">
+              <Table>
                 <TableHeader>
                   <TableRow>
                     <TableHead className="w-[80px]">ID</TableHead>

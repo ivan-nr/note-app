@@ -26,7 +26,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { toast } from "react-toastify";
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen }) => {
   const navigate = useNavigate();
 
   const userId = localStorage.getItem("userID");
@@ -59,7 +59,11 @@ const Sidebar = () => {
     .join("");
 
   return (
-    <nav className="hidden w-80 min-h-screen bg-base-200 text-base-content md:flex flex-col justify-between border-r-2">
+    <nav
+      className={`${
+        isOpen ? "translate-x-0" : "-translate-x-full"
+      } fixed top-0 left-0 h-full w-64 md:w-80 bg-background text-base-content transform transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 flex flex-col justify-between border-r-2 z-50`}
+    >
       <div className="flex flex-col w-full my-4 px-4 py-4 gap-2">
         <div className="flex justify-center items-center gap-4 mb-8">
           <NotebookPen size={32} className="text-primary" />
