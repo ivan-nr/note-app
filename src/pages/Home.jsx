@@ -15,7 +15,7 @@ import {
   postNotes,
   updateNotes,
 } from "@/hooks/notes";
-import { Edit, Loader2, NotebookPen, Trash2 } from "lucide-react";
+import { Edit, Loader2, Menu, NotebookPen, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -155,19 +155,21 @@ const Home = () => {
 
   return (
     <Layout>
-      <div className="w-full h-screen p-8 flex flex-col gap-4 overflow-y-auto">
-        <div className="flex justify-around items-center mx-8 border-b pb-2">
+      <div className="w-full h-screen p-4 lg:p-8 flex flex-col gap-4 overflow-y-auto">
+        <div className="flex justify-between items-center md:mx-4 lg:mx-8 border-b pb-3">
           <h2 className="scroll-m-20 text-2xl md:text-3xl font-semibold tracking-tight first:mt-0 w-full">
             Home
           </h2>
+        </div>
 
+        <div>
           <Button
             variant="outline"
-            className="flex gap-2 justify-center items-center"
+            className="flex gap-2 justify-center items-center md:mx-4 lg:mx-8"
             onClick={openAddDialog}
           >
             <NotebookPen size={20} />
-            <span className="hidden md:block">Add Note</span>
+            <span>Add Note</span>
           </Button>
         </div>
 
