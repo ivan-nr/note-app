@@ -33,16 +33,13 @@ const Login = () => {
         localStorage.setItem("token", token);
         localStorage.setItem("userID", JSON.stringify(user.id));
         localStorage.setItem("userName", user.name);
-        console.log("id", user.id);
-        console.log("name", user.name);
-        // decode token
+
         navigate("/");
-        setTimeout(() => {
-          window.location.reload();
-        }, 3000);
       }
     } catch (error) {
-      toast.error(error.message);
+      toast.error(
+        error.response?.data?.message || "An error occurred while logging in"
+      );
     } finally {
       setLoading(false);
     }

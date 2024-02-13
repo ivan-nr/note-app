@@ -39,9 +39,7 @@ const Sidebar = ({ isOpen }) => {
         if (res.status === 200) {
           toast.success(res.data.message);
           navigate("/login", { replace: true });
-          setTimeout(() => {
-            window.location.reload();
-          }, 3000);
+
           localStorage.removeItem("token");
           localStorage.removeItem("userID");
           localStorage.removeItem("userName");

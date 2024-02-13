@@ -226,7 +226,7 @@ const Home = () => {
                 This action cannot be undone. This will permanently delete your
                 note and remove your data from our servers.
               </div>
-              <DialogFooter className="flex justify-end">
+              <DialogFooter className="flex justify-end gap-1">
                 <Button
                   type="button"
                   variant="secondary"

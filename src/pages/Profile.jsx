@@ -42,7 +42,7 @@ const Profile = () => {
     try {
       const data = await getUser(userId);
       const { name, user } = data.user;
-      // console.log(name, user);
+
       setName(name);
       setUser(user);
       setLoading(false);
@@ -96,9 +96,7 @@ const Profile = () => {
         setDialogOpen(false);
         setLoading(false);
         navigate("/login", { replace: true });
-        setTimeout(() => {
-          window.location.reload();
-        }, 3000);
+
         localStorage.removeItem("token");
         localStorage.removeItem("userID");
         localStorage.removeItem("userName");
@@ -227,7 +225,7 @@ const Profile = () => {
             This action cannot be undone. This will{" "}
             {isEditing ? "update" : "delete"} your data.
           </div>
-          <DialogFooter className="flex justify-end">
+          <DialogFooter className="flex justify-end gap-1">
             <Button
               type="button"
               variant="secondary"

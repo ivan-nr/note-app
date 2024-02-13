@@ -5,14 +5,19 @@ import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { ThemeProvider } from "./components/theme-provider.jsx";
+import { ThemeProvider, useTheme } from "./components/theme-provider.jsx";
+
+function ThemedToastContainer(props) {
+  const { theme } = useTheme();
+  return <ToastContainer {...props} theme={theme} />;
+}
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
     <BrowserRouter>
       <React.StrictMode>
         <App />
-        <ToastContainer
+        <ThemedToastContainer
           position="top-center"
           autoClose={3000}
           hideProgressBar={false}
@@ -22,8 +27,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           pauseOnFocusLoss
           draggable
           pauseOnHover
-          theme={localStorage.getItem("vite-ui-theme") || "light"}
-          transition:Bounce
         />
       </React.StrictMode>
     </BrowserRouter>
