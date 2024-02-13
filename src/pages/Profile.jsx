@@ -21,7 +21,6 @@ import {
   DialogTitle,
   DialogFooter,
 } from "@/components/ui/dialog";
-import { api } from "@/utils/api";
 import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
