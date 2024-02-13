@@ -8,8 +8,6 @@ import NotFound from "./pages/NotFound";
 import Profile from "./pages/Profile";
 
 const App = () => {
-  const id = localStorage.getItem("userID");
-
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
@@ -18,7 +16,7 @@ const App = () => {
       <Route element={<PrivateRoute />}>
         <Route path="/" element={<Home />} />
         <Route path="/users" element={<Users />} />
-        <Route path={`users/${id}`} element={<Profile />} />
+        <Route path="users/:id" element={<Profile />} />
       </Route>
     </Routes>
   );
