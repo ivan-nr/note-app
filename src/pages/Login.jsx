@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { login } from "@/hooks/auth";
 import { toast } from "react-toastify";
+import { jwtDecode } from "jwt-decode";
 
 const Login = () => {
   const [user, setUser] = useState("");
@@ -19,20 +20,21 @@ const Login = () => {
 
     try {
       const payload = {
-        user: user,
-        pass: pass,
+        username: user,
+        password: pass,
       };
 
       const data = await login(payload);
 
       if (data) {
-        console.log(data);
+        console.log(data.data);
         toast.success(data.message);
-        const token = data.access_token;
-        const user = data.user;
+        const token = data.data;
+        const decodedToken = jwtDecode(token);
+
         localStorage.setItem("token", token);
-        localStorage.setItem("userID", JSON.stringify(user.id));
-        localStorage.setItem("userName", user.name);
+        localStorage.setItem("userID", decodedToken.user_id);
+        localStorage.setItem("userName", decodedToken.username);
 
         navigate("/");
       }
