@@ -46,9 +46,9 @@ const Home = () => {
       setLoading(true);
       const data = await getNotes();
       // setNotes(data.notes);
-      // console.log(data.notes);
-      const { notes } = data;
-      setNotes(notes);
+      console.log("data.notes", data);
+      // const { notes } = data;
+      setNotes(data.data);
 
       setLoading(false);
     } catch (error) {
@@ -123,7 +123,7 @@ const Home = () => {
 
     try {
       const data = await getNote(id);
-      const { title, note } = data.note;
+      const { title, note } = data.data;
 
       setTitle(title);
       setNote(note);
@@ -182,7 +182,7 @@ const Home = () => {
           ) : (
             notes.map((note) => (
               <Card
-                key={note.note_id}
+                key={note.ID}
                 className="w-[300px] md:w-[240px] lg:w-[280px] flex flex-col justify-between"
               >
                 <div>
@@ -202,14 +202,14 @@ const Home = () => {
                   <Button
                     variant="outline"
                     size="icon"
-                    onClick={() => handleClickEdit(note.note_id)}
+                    onClick={() => handleClickEdit(note.ID)}
                   >
                     <Edit size={16} />
                   </Button>
                   <Button
                     variant="destructive"
                     size="icon"
-                    onClick={() => handleClickDelete(note.note_id)}
+                    onClick={() => handleClickDelete(note.ID)}
                   >
                     <Trash2 size={16} />
                   </Button>
